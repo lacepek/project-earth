@@ -1,5 +1,8 @@
-import GameService from './services/GameService';
+import Game from './Game';
+import testScene from './assets/scenes/test-scene';
 
-GameService.init();
+Game.init();
 
-GameService.start();
+Game.setScene(testScene);
+
+Game.start();

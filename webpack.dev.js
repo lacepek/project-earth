@@ -13,7 +13,7 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.ts']
+    extensions: ['.js', '.ts', '.jpg']
   },
   devtool: 'eval-source-map',
   module: {
@@ -25,7 +25,8 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
-      { test: /\.css$/, exclude: modulesDir, use: ['style-loader', 'css-loader'] }
+      { test: /\.css$/, exclude: modulesDir, use: ['style-loader', 'css-loader'] },
+      { test: /\.(png|svg|jpg|gif)$/, exclude: modulesDir, use: ['file-loader'] }
     ]
   },
   plugins: [

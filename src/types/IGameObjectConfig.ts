@@ -1,12 +1,12 @@
-import { Color, CollisionType } from 'excalibur';
-import IDimensions from './IDimensions';
 import Behaviour from '../behaviours/Behaviour';
+import { Texture, IPoint } from 'pixi.js';
 
 interface IGameObjectConfig {
-  dimensions: IDimensions;
-  color: Color;
-  collisionType: CollisionType;
+  position: IPoint;
   behaviours: Behaviour[];
+  isInteractive?: boolean;
+  texture?: Texture,
+  points?: IPoint[],
 }
 
 export default IGameObjectConfig;

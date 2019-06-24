@@ -1,5 +1,5 @@
-import { Vector } from 'excalibur';
 import GameObject from '../actors/GameObject';
+import { IPoint, interaction } from 'pixi.js';
 
 class Behaviour {
   protected gameObject: GameObject;
@@ -8,17 +8,19 @@ class Behaviour {
     this.gameObject = new GameObject();
   }
 
-  public awake() {}
+  public init(): void {}
 
-  public update() {}
+  public awake(): void {}
 
-  public setGameObject(gameObject: GameObject) {
+  public update(): void {}
+
+  public setGameObject(gameObject: GameObject): void {
     this.gameObject = gameObject;
   }
 
-  protected setPosition(position: Vector) {
-    this.gameObject.setPosition(position);
-  }
+  /*protected onClick = (event: interaction.InteractionEvent) => {
+    console.log(this.gameObject);
+  };*/
 }
 
 export default Behaviour;

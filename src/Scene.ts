@@ -23,7 +23,6 @@ class Scene {
   }
 
   public addChild(gameObject: GameObject) {
-    gameObject.init();
     if (gameObject.drawable) {
       this.container.addChild(gameObject.drawable);
       gameObject.awake();

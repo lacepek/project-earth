@@ -1,5 +1,5 @@
 import Behaviour from './Behaviour';
-import { Point } from 'pixi.js';
+import { Point, Sprite } from 'pixi.js';
 
 class TransformBehaviour extends Behaviour {
   private position: Point;
@@ -12,12 +12,16 @@ class TransformBehaviour extends Behaviour {
   public init() {
     if (this.gameObject.drawable) {
       this.gameObject.drawable.position = this.position;
+      if (this.gameObject.drawable instanceof Sprite) {
+        this.gameObject.drawable.anchor.set(0.5);
+      }
     }
   }
 
   public update() {
     if (this.gameObject.drawable) {
       this.gameObject.drawable.position = this.position;
+
     }
   }
 

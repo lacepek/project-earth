@@ -10,6 +10,13 @@ class Behaviour {
 
   public init(): void {}
 
+  public postInit(): void {
+    if (this.gameObject.drawable) {
+      const event = 'pointertap';
+      this.gameObject.drawable.on(event, this.onClick);
+    }
+  }
+
   public awake(): void {}
 
   public update(): void {}
@@ -18,9 +25,9 @@ class Behaviour {
     this.gameObject = gameObject;
   }
 
-  /*protected onClick = (event: interaction.InteractionEvent) => {
+  protected onClick = (event: interaction.InteractionEvent) => {
     console.log(this.gameObject);
-  };*/
+  };
 }
 
 export default Behaviour;

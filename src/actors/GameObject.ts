@@ -19,12 +19,6 @@ class GameObject {
     }
   }
 
-  public init() {
-    this.behaviours.forEach(behaviour => {
-      behaviour.init();
-    });
-  }
-
   public awake(): void {
     this.behaviours.forEach(behaviour => {
       behaviour.awake();
@@ -38,24 +32,24 @@ class GameObject {
   }
 
   private config(config: IGameObjectConfig): void {
-    const { position, behaviours } = config;
-
-    // this.position = new TransformBehaviour(position);
+    const { position, behaviours, isInteractive } = config;
 
     this.behaviours = behaviours;
 
-    // this.behaviours.push(this.position);
+    this.behaviours.push(new TransformBehaviour(position));
 
     this.behaviours.forEach(behaviour => {
       behaviour.setGameObject(this);
-
+      behaviour.init();
+      behaviour.postInit();
       Game.addUpdate(() => {
         behaviour.update();
       });
     });
-
-    if (this.drawable) {
-      this.drawable.position = position;
+    
+    console.log({ gameObject: this, drawable: this.drawable });
+    if (isInteractive) {
+      this.drawable.interactive = true;
     }
   }
 }
